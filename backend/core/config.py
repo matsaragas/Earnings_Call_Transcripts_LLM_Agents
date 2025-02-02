@@ -9,4 +9,12 @@ class Settings(BaseSettings):
         "http://localhost:3000",
         "http://localhost:8001",  # type: ignore
     ]
+    SYSTEM_TEMPLATE = """
+    Answer the user's questions based on the below context. 
+    If the context doesn't contain any relevant information to the questions, don't make someting up
+    and just reply information cannot be fount:
+    <context>
+    {context}
+    </context>
+    """
 
