@@ -1,16 +1,35 @@
 from fastapi import FastAPI, APIRouter, Request, Depends
-from api.endpoints import worker
+import api.endpoints.worker as worker
 from core.config import Settings
+from langchain_openai import AzureOpenAIEmbeddings
 from fastapi.middleware.cors import CORSMiddleware
+from langchain.vectorstores import FAISS
+
 
 ORIGINS = ["http://localhost:8001",
            "http://localhost:5173"]
 
-settings = Settings()
-app = FastAPI(title=settings.PROJECT_NAME)
-api_router = APIRouter(settings.API_V1_STR)
 
-worker_routes =worker.build(settings)
+embeddings = AzureOpenAIEmbeddings(
+    azure_deployment="",
+    openai_api_version="",
+    azure_endpoint="",
+    api_key=""
+)
+
+
+settings = Settings()
+
+vector_store = FAISS.load_local(
+    settings.VECTOR_DIR,
+    embeddings,
+    allow_dangerous_deserialization=True)
+retriever = vector_store.as_retriever()
+
+app = FastAPI(title=settings.PROJECT_NAME)
+api_router = APIRouter(prefix=settings.API_V1_STR)
+
+worker_routes =worker.build(settings, retriever)
 api_router.include_router(worker_routes, tags=["Plugin Worker"])
 app.include_router(api_router)
 
