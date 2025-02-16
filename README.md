@@ -5,7 +5,7 @@ This notebook shows how to create a simple `plan-and-execute` style agent to per
 
 ![Logo](notebooks/images/earnings_agent.png)
 
-This is similar to a typical ReAct style agent where you think one step at a time. The advantages of this `plan-and-execute`
+This is similar to a typical [ReAct](https://arxiv.org/abs/2210.03629) style agent where you think one step at a time. The advantages of this `plan-and-execute`
 style agent are:
 
 
