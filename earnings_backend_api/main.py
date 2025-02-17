@@ -1,9 +1,7 @@
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+import asyncio
 
-from config import Settings
 from core.controller import Controller
 
-
-settings = Settings()
-controller = Controller(settings=settings)
+controller = Controller()
+message = "what was the difference in the total revenue between Nvidia and Lyft in 2020?"
+asyncio.run(controller.process_questions(message))
