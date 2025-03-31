@@ -1,13 +1,18 @@
-# QA on Earnings Calls Transcripts and Fundamental Analysis with LLM Agent
+# QA on Earnings Calls Transcripts & Fundamental Analysis with LLM Agent
 
 
 
-This notebook demonstrates how to develop a `plan-and-execute` style LLM agent to perform complex financial analysis using 
-structured and unstructured data, such as `earnings call transcripts` and `time-series financial fundamentals`.
+This repo demonstrates how to build a `plan-and-execute` style LLM agents to perform complex financial analysis using 
+structured and unstructured data. The agent processes:
+
+* <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png?v8" alt="News Icon" width="20">`earnings call transcripts` and 
+* <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png?v8" alt="News Icon" width="20">`time-series financial fundamentals`
+
+
 
 ## Questions
 
-The agent can answer complex questions such as:
+The agent can answer complex financial questions such as:
 
 * What are the key differences in the competitive market environments where Lyft and Uber operate?
 * Compare the total revenue between uber and lyft in 2020. How do these revenues compare to Uber's average revenue from Q4 2012 to
